@@ -1,4 +1,3 @@
-# src/be_105/main.py
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List
@@ -18,6 +17,10 @@ students_db = [
     Student(id=3, name="Charlie",age=23, dept="ME"),
     Student(id=4, name="Disha",  age=21, dept="CSE"),
 ]
+
+@app.get("/")
+def root():
+    return {"message": "Welcome to the Student Directory API"}
 
 @app.get("/students", response_model=List[Student])
 def list_students():
